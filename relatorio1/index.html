@@ -48,9 +48,10 @@
 
     /* Logo */
     .logo {
-      width: 250px;
+      width: 150px;
       margin-bottom: 20px;
-      opacity: 0.8;
+      opacity: 1; /* Logo com opacidade aumentada */
+      filter: brightness(1.5); /* Adiciona brilho à logo */
     }
 
     /* Título principal */
@@ -75,6 +76,7 @@
       justify-content: center;
       align-items: center;
       gap: 10px;
+      position: relative;
     }
 
     .password-input {
@@ -85,21 +87,31 @@
       color: #fff; /* Cor da letra */
       font-size: 1.5rem;
       text-align: center;
-      border: none; /* Sem borda nos campos */
-      transition: background 0.3s;
+      border: 2px solid transparent; /* Sem borda inicial */
+      transition: background 0.3s, border-color 0.3s;
     }
 
     .password-input:focus {
       background: rgba(255, 255, 255, 0.3); /* Efeito de fundo claro ao focar */
       outline: none;
+      border-color: #2874A6; /* Cor da borda ao focar */
     }
 
     /* Ícone de apagar */
     .clear-icon {
+      position: absolute;
+      right: -35px; /* Ajusta a posição do ícone */
+      top: 0;
       cursor: pointer;
       color: #fff;
       font-size: 1.5rem;
-      margin-left: 10px;
+    }
+
+    /* Efeito de hover no ícone de apagar */
+    .clear-icon:hover {
+      color: #2874A6; /* Cor de destaque ao passar o mouse */
+      transform: scale(1.2); /* Aumenta ligeiramente o ícone */
+      transition: transform 0.3s, color 0.3s;
     }
 
     /* Botão de envio */
@@ -159,7 +171,7 @@
         <input type="password" class="password-input" id="input2" maxlength="1" autocomplete="off">
         <input type="password" class="password-input" id="input3" maxlength="1" autocomplete="off">
         <input type="password" class="password-input" id="input4" maxlength="1" autocomplete="off">
-        <span class="clear-icon" id="clearFields">✖</span> <!-- Ícone para apagar -->
+        <span class="clear-icon" id="clearFields">🗑️</span> <!-- Ícone para apagar -->
       </div>
       <button type="submit">Acessar Relatório</button>
       <p class="error" id="errorMessage" style="display: none;">Senha incorreta. Tente novamente.</p>
@@ -308,6 +320,10 @@
       input.addEventListener('input', function () {
         if (input.value.length === 1 && index < inputs.length - 1) {
           inputs[index + 1].focus(); // Foca no próximo campo quando o usuário digita algo
+        } else if (input.value === '') {
+          if (index > 0) {
+            inputs[index - 1].focus(); // Volta para o campo anterior se o valor for apagado
+          }
         }
       });
     });
