@@ -11,15 +11,16 @@
       padding: 0;
       box-sizing: border-box;
     }
-    
+
     body {
       font-family: 'Montserrat', sans-serif;
-      background-color: #043049; /* Cor de fundo */
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       margin: 0;
+      position: relative;
+      overflow: hidden;
     }
 
     /* Container principal */
@@ -32,6 +33,7 @@
       padding: 40px;
       width: 90%;
       max-width: 500px;
+      z-index: 1; /* Garante que o conteúdo fique acima das partículas */
     }
 
     /* Logo */
@@ -110,6 +112,9 @@
 </head>
 <body>
 
+  <!-- Particles.js Background -->
+  <div id="particles-js"></div>
+
   <div class="container">
     <!-- Logo -->
     <img src="https://drive.google.com/uc?export=view&id=18ohVJYPtPaSVcH6aBaa0Efg2Pgftu-3i" alt="Logo" class="logo">
@@ -131,7 +136,73 @@
     </form>
   </div>
 
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
   <script>
+    // Inicia o efeito de partículas
+    particlesJS('particles-js', {
+      particles: {
+        number: {
+          value: 50,
+          density: {
+            enable: true,
+            value_area: 800
+          }
+        },
+        color: {
+          value: "#ffffff"
+        },
+        shape: {
+          type: "circle",
+          stroke: {
+            width: 0,
+            color: "#ffffff"
+          }
+        },
+        opacity: {
+          value: 0.3,
+          random: true,
+          anim: {
+            enable: true,
+            speed: 1,
+            opacity_min: 0.1
+          }
+        },
+        size: {
+          value: 3,
+          random: true,
+          anim: {
+            enable: true,
+            speed: 40,
+            size_min: 0.1
+          }
+        },
+        line_linked: {
+          enable: false
+        },
+        move: {
+          enable: true,
+          speed: 2,
+          direction: "none",
+          random: true,
+          straight: false,
+          out_mode: "out"
+        }
+      },
+      interactivity: {
+        events: {
+          onhover: {
+            enable: true,
+            mode: "repulse"
+          },
+          onclick: {
+            enable: true,
+            mode: "push"
+          }
+        }
+      }
+    });
+
     // Função para validar a senha
     document.getElementById('passwordForm').addEventListener('submit', function(e) {
       e.preventDefault();
@@ -143,7 +214,7 @@
 
       if (senhaInput === senhaCorreta) {
         // Redirecionar para o relatório real
-        window.location.href = 'https://lookerstudio.google.com/reporting/d675a68e-53a0-406a-87c0-dc02f48b2bf6'; // Substitua pelo link real do seu relatório
+        window.location.href = 'https://lookerstudio.google.com/reporting/8bc477e4-2e80-4aec-af8c-ee9f981a7109'; // Link correto do relatório
       } else {
         // Mostrar mensagem de erro
         erroMensagem.style.display = 'block';
