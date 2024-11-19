@@ -94,14 +94,15 @@
     .password-input:focus {
       background: rgba(255, 255, 255, 0.3); /* Efeito de fundo claro ao focar */
       outline: none;
-      border-color: #2874A6; /* Cor da borda ao focar */
+      border-color: #ffffff; /* Borda branca ao focar */
     }
 
     /* Ícone de apagar */
     .clear-icon {
       position: absolute;
-      right: -35px; /* Ajusta a posição do ícone */
-      top: 0;
+      right: -30px; /* Ajusta a posição do ícone */
+      top: 50%;
+      transform: translateY(-50%); /* Alinha o ícone verticalmente */
       cursor: pointer;
       color: #fff;
       font-size: 1.5rem;
@@ -110,7 +111,7 @@
     /* Efeito de hover no ícone de apagar */
     .clear-icon:hover {
       color: #2874A6; /* Cor de destaque ao passar o mouse */
-      transform: scale(1.2); /* Aumenta ligeiramente o ícone */
+      transform: scale(1.2) translateY(-50%); /* Aumenta ligeiramente o ícone */
       transition: transform 0.3s, color 0.3s;
     }
 
