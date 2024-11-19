@@ -43,6 +43,7 @@
       width: 90%;
       max-width: 500px;
       z-index: 1; /* Garante que o conteúdo fique acima do fundo */
+      border: 1px solid #ffffff; /* Borda fina ao redor do container */
     }
 
     /* Logo */
@@ -84,14 +85,21 @@
       color: #fff; /* Cor da letra */
       font-size: 1.5rem;
       text-align: center;
-      border: 2px solid #ffffff; /* Cor da borda */
+      border: none; /* Sem borda nos campos */
       transition: background 0.3s;
     }
 
     .password-input:focus {
       background: rgba(255, 255, 255, 0.3); /* Efeito de fundo claro ao focar */
       outline: none;
-      border-color: #2874A6; /* Cor da borda ao focar */
+    }
+
+    /* Ícone de apagar */
+    .clear-icon {
+      cursor: pointer;
+      color: #fff;
+      font-size: 1.5rem;
+      margin-left: 10px;
     }
 
     /* Botão de envio */
@@ -116,12 +124,25 @@
       color: red;
       margin-top: 10px;
       font-size: 1rem;
+      font-weight: bold; /* Texto em negrito */
+    }
+
+    /* Animação do fundo (gradiente dinâmico) */
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Particles.js Background -->
-  <div id="particles-js"></div>
+  <div id="particles-js"></div> <!-- Particles.js Background -->
 
   <div class="container">
     <!-- Logo -->
@@ -138,6 +159,7 @@
         <input type="password" class="password-input" id="input2" maxlength="1" autocomplete="off">
         <input type="password" class="password-input" id="input3" maxlength="1" autocomplete="off">
         <input type="password" class="password-input" id="input4" maxlength="1" autocomplete="off">
+        <span class="clear-icon" id="clearFields">✖</span> <!-- Ícone para apagar -->
       </div>
       <button type="submit">Acessar Relatório</button>
       <p class="error" id="errorMessage" style="display: none;">Senha incorreta. Tente novamente.</p>
@@ -289,6 +311,13 @@
         }
       });
     });
+
+    // Função para limpar os campos de senha
+    document.getElementById('clearFields').addEventListener('click', function () {
+      inputs.forEach(input => input.value = ''); // Limpa todos os campos de senha
+      document.getElementById('errorMessage').style.display = 'none'; // Esconde a mensagem de erro
+    });
   </script>
+
 </body>
 </html>
