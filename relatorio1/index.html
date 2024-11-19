@@ -1,4 +1,35 @@
-0;
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Área Restrita</title>
+  <style>
+    /* Reset do estilo */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      position: relative;
+      overflow: hidden;
+      background-color: #043049; /* Cor de fundo da página */
+    }
+
+    /* Particles.js */
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
     }
 
     /* Container principal */
@@ -19,7 +50,7 @@
     .logo {
       width: 150px;
       margin-bottom: 20px;
-      opacity: 1; /* Diminuir o brilho da logo em 20% */
+      opacity: 0.8; /* Diminuir o brilho da logo em 20% */
       filter: brightness(0.8); /* Diminui o brilho da logo em 20% */
     }
 
@@ -280,6 +311,5 @@
       });
     });
   </script>
-
 </body>
 </html>
