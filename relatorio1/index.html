@@ -50,7 +50,8 @@
     .logo {
       width: 150px;
       margin-bottom: 20px;
-      opacity: 0.6; /* Diminui o brilho da logo */
+      opacity: 1; /* Aumenta o brilho da logo em 50% */
+      filter: brightness(1.5); /* Aumenta o brilho da logo */
     }
 
     /* Título principal */
@@ -124,11 +125,12 @@
       border: none;
       border-radius: 30px;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: background 0.3s, transform 0.3s;
     }
 
     button:hover {
       background-color: #2874A6;
+      transform: translateY(-5px); /* Efeito go up (subir um pouco) */
     }
 
     /* Mensagem de erro */
