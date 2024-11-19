@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Área Restrita</title>
-  <link rel="stylesheet" href="style.css">
   <style>
     /* Reset do estilo */
     * {
@@ -22,15 +21,9 @@
       margin: 0;
       position: relative;
       overflow: hidden;
-      background-color: #043049; /* Cor de fundo da página */
-    }
-
-    /* Particles.js */
-    #particles-js {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
+      background: linear-gradient(145deg, #043049, #0b4261); /* Fundo dinâmico com gradiente */
+      background-size: 400% 400%;
+      animation: gradientAnimation 10s ease infinite; /* Animação do fundo */
     }
 
     /* Container principal */
@@ -43,7 +36,7 @@
       padding: 40px;
       width: 90%;
       max-width: 500px;
-      z-index: 1; /* Garante que o conteúdo fique acima das partículas */
+      z-index: 1; /* Garante que o conteúdo fique acima do fundo */
     }
 
     /* Logo */
@@ -118,12 +111,22 @@
       margin-top: 10px;
       font-size: 1rem;
     }
+
+    /* Animação do fundo (gradiente dinâmico) */
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
   </style>
 </head>
 <body>
-  <!-- Particles.js Background -->
-  <div id="particles-js"></div>
-
   <div class="container">
     <!-- Logo -->
     <img src="https://github.com/relatoriocartorio4/arearestrita/raw/main/relatorio1/logo_6oficio%20(1).png" alt="Logo" class="logo">
@@ -145,73 +148,7 @@
     </form>
   </div>
 
-  <!-- Adicionando Particles.js via CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
   <script>
-    // Configurações do Particles.js
-    particlesJS('particles-js', {
-      particles: {
-        number: {
-          value: 50,
-          density: {
-            enable: true,
-            value_area: 800,
-          },
-        },
-        color: {
-          value: "#ffffff",
-        },
-        shape: {
-          type: "circle",
-          stroke: {
-            width: 0,
-            color: "#ffffff",
-          },
-        },
-        opacity: {
-          value: 0.3,
-          random: true,
-          anim: {
-            enable: true,
-            speed: 1,
-            opacity_min: 0.1,
-          },
-        },
-        size: {
-          value: 3,
-          random: true,
-          anim: {
-            enable: true,
-            speed: 40,
-            size_min: 0.1,
-          },
-        },
-        line_linked: {
-          enable: false,
-        },
-        move: {
-          enable: true,
-          speed: 2,
-          direction: "none",
-          random: true,
-          straight: false,
-          out_mode: "out",
-        },
-      },
-      interactivity: {
-        events: {
-          onhover: {
-            enable: true,
-            mode: "repulse",
-          },
-          onclick: {
-            enable: true,
-            mode: "push",
-          },
-        },
-      },
-    });
-
     // Função para validar a senha
     document.getElementById('passwordForm').addEventListener('submit', function (e) {
       e.preventDefault();
