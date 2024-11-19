@@ -152,7 +152,7 @@
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.js"></script> <!-- Biblioteca para hash -->
   <script>
-    // Configuração do Particles.js sem o modo "bubble" e com partículas de tamanho mais controlado
+    // Configuração do Particles.js
     particlesJS('particles-js', {
       "particles": {
         "number": {
@@ -200,7 +200,7 @@
       "interactivity": {
         "events": {
           "onhover": {
-            "enable": false // Desabilitando o efeito "bubble" ao passar o mouse
+            "enable": false // Desabilitado o efeito de bubble
           },
           "onclick": {
             "enable": true,
@@ -211,30 +211,30 @@
       "retina_detect": true
     });
 
-    // Hash da senha "9221" (SHA256) - Verifique se o hash está correto
+    // Hash da senha correta (9221)
     const senhaHashCorreta = 'ec432f66f19440b9d3a00b8487c88a2c4c6a3f31374a5c518e56c32232292fcc';
 
     document.getElementById('passwordForm').addEventListener('submit', function (e) {
       e.preventDefault();
 
-      // Combinar os valores digitados
+      // Capturando os valores dos inputs
       const senhaDigitada =
         document.getElementById('input1').value +
         document.getElementById('input2').value +
         document.getElementById('input3').value +
         document.getElementById('input4').value;
 
-      // Garantir que a senha tenha 4 caracteres
+      // Verifica se todos os campos têm valores preenchidos
       if (senhaDigitada.length !== 4) {
         document.getElementById('errorMessage').innerText = 'Por favor, insira uma senha de 4 dígitos.';
         document.getElementById('errorMessage').style.display = 'block';
         return;
       }
 
-      // Gerar o hash da senha digitada
+      // Gerando o hash da senha digitada
       const senhaHashDigitada = CryptoJS.SHA256(senhaDigitada).toString();
 
-      console.log('Senha Digitada Hash: ', senhaHashDigitada); // Debugging - Para ver o hash gerado
+      console.log('Senha Digitada Hash: ', senhaHashDigitada);  // Para debugar o hash gerado
 
       // Verificar se o hash gerado é igual ao hash armazenado
       if (senhaHashDigitada === senhaHashCorreta) {
