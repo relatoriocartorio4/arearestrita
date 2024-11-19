@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Área Restrita</title>
+  <style>
+    /* Reset do estilo */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #043049; /* Cor de fundo */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    /* Container principal */
+    .container {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.1); /* Efeito de vidro com opacidade */
+      backdrop-filter: blur(10px); /* Efeito de desfocagem */
+      border-radius: 15px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      width: 90%;
+      max-width: 500px;
+    }
+
+    /* Logo */
+    .logo {
+      width: 150px;
+      margin-bottom: 20px;
+      opacity: 0.8;
+    }
+
+    /* Título principal */
+    h1 {
+      color: #ffffff; /* Cor das letras */
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    /* Subtítulo */
+    p {
+      color: #ffffff; /* Cor das letras */
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    /* Caixa de senha */
+    .password-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .password-input {
+      width: 50px;
+      height: 50px;
+      border-radius: 8px;
+      background: #0b4261; /* Cor de fundo do campo de senha */
+      color: #fff; /* Cor da letra */
+      font-size: 1.5rem;
+      text-align: center;
+      border: 2px solid #ffffff; /* Cor da borda */
+      transition: background 0.3s;
+    }
+
+    .password-input:focus {
+      background: rgba(255, 255, 255, 0.3); /* Efeito de fundo claro ao focar */
+      outline: none;
+      border-color: #2874A6; /* Cor da borda ao focar */
+    }
+
+    /* Botão de envio */
+    button {
+      margin-top: 20px;
+      padding: 12px 30px;
+      background-color: #016db5; /* Cor do botão */
+      color: #fff;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #2874A6;
+    }
+
+    /* Mensagem de erro */
+    .error {
+      color: red;
+      margin-top: 10px;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Logo -->
+    <img src="https://drive.google.com/uc?export=view&id=18ohVJYPtPaSVcH6aBaa0Efg2Pgftu-3i" alt="Logo" class="logo">
+    
+    <!-- Título da página -->
+    <h1>ÁREA RESTRITA</h1>
+    <p>Para acessar, coloque a senha de acesso</p>
+
+    <!-- Formulário de senha -->
+    <form id="passwordForm">
+      <div class="password-container">
+        <input type="password" class="password-input" id="input1" maxlength="1" autocomplete="off" autofocus>
+        <input type="password" class="password-input" id="input2" maxlength="1" autocomplete="off">
+        <input type="password" class="password-input" id="input3" maxlength="1" autocomplete="off">
+        <input type="password" class="password-input" id="input4" maxlength="1" autocomplete="off">
+      </div>
+      <button type="submit">Acessar Relatório</button>
+      <p class="error" id="errorMessage" style="display: none;">Senha incorreta. Tente novamente.</p>
+    </form>
+  </div>
+
+  <script>
+    // Função para validar a senha
+    document.getElementById('passwordForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Coletar as entradas de senha
+      const senhaInput = document.getElementById('input1').value + document.getElementById('input2').value + document.getElementById('input3').value + document.getElementById('input4').value;
+      const senhaCorreta = '8456'; // Senha definida
+      const erroMensagem = document.getElementById('errorMessage');
+
+      if (senhaInput === senhaCorreta) {
+        // Redirecionar para o relatório real
+        window.location.href = 'https://lookerstudio.google.com/reporting/d675a68e-53a0-406a-87c0-dc02f48b2bf6'; // Substitua pelo link real do seu relatório
+      } else {
+        // Mostrar mensagem de erro
+        erroMensagem.style.display = 'block';
+      }
+    });
+
+    // Automatizar o foco do próximo campo de senha
+    const inputs = document.querySelectorAll('.password-input');
+    inputs.forEach((input, index) => {
+      input.addEventListener('input', function() {
+        if (input.value.length === 1 && index < inputs.length - 1) {
+          inputs[index + 1].focus();  // Foca no próximo campo quando o usuário digita algo
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
