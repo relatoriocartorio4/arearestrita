@@ -152,18 +152,23 @@
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.js"></script> <!-- Biblioteca para hash -->
   <script>
-    // Substituindo configuração do particles.js pelo novo JSON
+    // Atualizando a configuração do particles.js para um efeito mais suave sem repulsão
     particlesJS('particles-js', {
       "particles": {
-        "number": { "value": 200, "density": { "enable": true, "value_area": 800 } },
+        "number": { "value": 160, "density": { "enable": true, "value_area": 800 } },
         "color": { "value": "#ffffff" },
         "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } },
-        "opacity": { "value": 1, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0, "sync": false } },
-        "size": { "value": 3, "random": true },
+        "opacity": { "value": 0.8, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0, "sync": false } },
+        "size": { "value": 4, "random": true },
         "line_linked": { "enable": false },
-        "move": { "enable": true, "speed": 1, "direction": "none", "random": true, "out_mode": "out" }
+        "move": { "enable": true, "speed": 0.5, "direction": "none", "random": true, "out_mode": "out" }
       },
-      "interactivity": { "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "repulse" } } },
+      "interactivity": { 
+        "events": { 
+          "onhover": { "enable": false },  // Removido o repulsão ao passar o mouse
+          "onclick": { "enable": false }    // Removido o repulsão ao clicar
+        }
+      },
       "retina_detect": true
     });
 
