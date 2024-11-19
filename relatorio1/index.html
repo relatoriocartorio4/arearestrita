@@ -50,7 +50,7 @@
     .logo {
       width: 150px;
       margin-bottom: 20px;
-      opacity: 0.8; /* Redução de brilho */
+      opacity: 1; /* Redução de brilho */
       filter: brightness(0.8); /* Diminui o brilho da logo em 20% */
     }
 
@@ -152,27 +152,67 @@
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.js"></script> <!-- Biblioteca para hash -->
   <script>
-    // Atualizando a configuração do particles.js para um efeito mais suave sem repulsão
+    // Configuração do Particles.js
     particlesJS('particles-js', {
       "particles": {
-        "number": { "value": 160, "density": { "enable": true, "value_area": 800 } },
-        "color": { "value": "#ffffff" },
-        "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } },
-        "opacity": { "value": 0.8, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0, "sync": false } },
-        "size": { "value": 4, "random": true },
-        "line_linked": { "enable": false },
-        "move": { "enable": true, "speed": 0.5, "direction": "none", "random": true, "out_mode": "out" }
+        "number": {
+          "value": 160,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#ffffff"
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          }
+        },
+        "opacity": {
+          "value": 1,
+          "random": true,
+          "anim": {
+            "enable": true,
+            "speed": 1,
+            "opacity_min": 0,
+            "sync": false
+          }
+        },
+        "size": {
+          "value": 3,
+          "random": true
+        },
+        "line_linked": {
+          "enable": false
+        },
+        "move": {
+          "enable": true,
+          "speed": 1,
+          "direction": "none",
+          "random": true,
+          "out_mode": "out"
+        }
       },
-      "interactivity": { 
-        "events": { 
-          "onhover": { "enable": false },  // Removido o repulsão ao passar o mouse
-          "onclick": { "enable": false }    // Removido o repulsão ao clicar
+      "interactivity": {
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "bubble"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "repulse"
+          }
         }
       },
       "retina_detect": true
     });
 
-    // Hash armazenado (senha = "9221")
+    // Hash da senha "9221" (SHA256)
     const senhaHashCorreta = 'ec432f66f19440b9d3a00b8487c88a2c4c6a3f31374a5c518e56c32232292fcc';
 
     document.getElementById('passwordForm').addEventListener('submit', function (e) {
