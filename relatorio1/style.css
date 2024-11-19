@@ -1,0 +1,103 @@
+/* Reset do estilo */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Container principal */
+.container {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1); /* Efeito de vidro com opacidade */
+  backdrop-filter: blur(10px); /* Efeito de desfocagem */
+  border-radius: 15px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  width: 90%;
+  max-width: 500px;
+  z-index: 1; /* Garante que o conteúdo fique acima das partículas */
+}
+
+/* Logo */
+.logo {
+  width: 150px;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+/* Título principal */
+h1 {
+  color: #ffffff; /* Cor das letras */
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Subtítulo */
+p {
+  color: #ffffff; /* Cor das letras */
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+/* Caixa de senha */
+.password-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.password-input {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  background: #0b4261; /* Cor de fundo do campo de senha */
+  color: #fff; /* Cor da letra */
+  font-size: 1.5rem;
+  text-align: center;
+  border: 2px solid #ffffff; /* Cor da borda */
+  transition: background 0.3s;
+}
+
+.password-input:focus {
+  background: rgba(255, 255, 255, 0.3); /* Efeito de fundo claro ao focar */
+  outline: none;
+  border-color: #2874A6; /* Cor da borda ao focar */
+}
+
+/* Botão de envio */
+button {
+  margin-top: 20px;
+  padding: 12px 30px;
+  background-color: #016db5; /* Cor do botão */
+  color: #fff;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #2874A6;
+}
+
+/* Mensagem de erro */
+.error {
+  color: red;
+  margin-top: 10px;
+  font-size: 1rem;
+}
