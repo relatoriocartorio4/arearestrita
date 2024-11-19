@@ -1,35 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Área Restrita</title>
-  <style>
-    /* Reset do estilo */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Montserrat', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      position: relative;
-      overflow: hidden;
-      background-color: #043049; /* Cor de fundo da página */
-    }
-
-    /* Particles.js */
-    #particles-js {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
+0;
     }
 
     /* Container principal */
@@ -50,8 +19,8 @@
     .logo {
       width: 150px;
       margin-bottom: 20px;
-      opacity: 1; /* Aumenta o brilho da logo em 50% */
-      filter: brightness(1.5); /* Aumenta o brilho da logo */
+      opacity: 1; /* Diminuir o brilho da logo em 20% */
+      filter: brightness(0.8); /* Diminui o brilho da logo em 20% */
     }
 
     /* Título principal */
@@ -95,24 +64,6 @@
       background: rgba(255, 255, 255, 0.3); /* Efeito de fundo claro ao focar */
       outline: none;
       border-color: #2874A6; /* Borda azul ao focar */
-    }
-
-    /* Ícone de apagar */
-    .clear-icon {
-      position: absolute;
-      right: -40px; /* Ajusta a posição do ícone */
-      top: 50%;
-      transform: translateY(-50%); /* Alinha o ícone verticalmente */
-      cursor: pointer;
-      color: #fff;
-      font-size: 1.5rem;
-    }
-
-    /* Efeito de hover no ícone de apagar */
-    .clear-icon:hover {
-      color: #2874A6; /* Cor de destaque ao passar o mouse */
-      transform: scale(1.2) translateY(-50%); /* Aumenta ligeiramente o ícone */
-      transition: transform 0.3s, color 0.3s;
     }
 
     /* Botão de envio */
@@ -173,7 +124,6 @@
         <input type="password" class="password-input" id="input2" maxlength="1" autocomplete="off">
         <input type="password" class="password-input" id="input3" maxlength="1" autocomplete="off">
         <input type="password" class="password-input" id="input4" maxlength="1" autocomplete="off">
-        <span class="clear-icon" id="clearFields">🗑️</span> <!-- Ícone para apagar -->
       </div>
       <button type="submit">Acessar Relatório</button>
       <p class="error" id="errorMessage" style="display: none;">Senha incorreta. Tente novamente.</p>
@@ -304,7 +254,7 @@
         document.getElementById('input2').value +
         document.getElementById('input3').value +
         document.getElementById('input4').value;
-      const senhaCorreta = '9221'; // Senha definida
+      const senhaCorreta = '9221'; // Nova senha definida
       const erroMensagem = document.getElementById('errorMessage');
 
       if (senhaInput === senhaCorreta) {
@@ -328,12 +278,6 @@
           }
         }
       });
-    });
-
-    // Função para limpar os campos de senha
-    document.getElementById('clearFields').addEventListener('click', function () {
-      inputs.forEach(input => input.value = ''); // Limpa todos os campos de senha
-      document.getElementById('errorMessage').style.display = 'none'; // Esconde a mensagem de erro
     });
   </script>
 
