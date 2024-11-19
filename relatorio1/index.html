@@ -50,8 +50,7 @@
     .logo {
       width: 150px;
       margin-bottom: 20px;
-      opacity: 1; /* Logo com opacidade aumentada */
-      filter: brightness(1.5); /* Adiciona brilho à logo */
+      opacity: 0.6; /* Diminui o brilho da logo */
     }
 
     /* Título principal */
@@ -87,20 +86,20 @@
       color: #fff; /* Cor da letra */
       font-size: 1.5rem;
       text-align: center;
-      border: 2px solid transparent; /* Sem borda inicial */
+      border: 2px solid #ffffff; /* Borda branca constante */
       transition: background 0.3s, border-color 0.3s;
     }
 
     .password-input:focus {
       background: rgba(255, 255, 255, 0.3); /* Efeito de fundo claro ao focar */
       outline: none;
-      border-color: #ffffff; /* Borda branca ao focar */
+      border-color: #2874A6; /* Borda azul ao focar */
     }
 
     /* Ícone de apagar */
     .clear-icon {
       position: absolute;
-      right: -30px; /* Ajusta a posição do ícone */
+      right: -40px; /* Ajusta a posição do ícone */
       top: 50%;
       transform: translateY(-50%); /* Alinha o ícone verticalmente */
       cursor: pointer;
