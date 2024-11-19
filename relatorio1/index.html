@@ -48,9 +48,10 @@
 
     /* Logo */
     .logo {
-      width: 200px;
+      width: 150px;
       margin-bottom: 20px;
-      opacity: 1; /* Diminuir o brilho da logo em 20% */ /* Diminui o brilho da logo em 20% */
+      opacity: 0.8; /* Redução de brilho */
+      filter: brightness(0.8); /* Diminui o brilho da logo em 20% */
     }
 
     /* Título principal */
@@ -121,19 +122,6 @@
       font-size: 1rem;
       font-weight: bold; /* Texto em negrito */
     }
-
-    /* Animação do fundo (gradiente dinâmico) */
-    @keyframes gradientAnimation {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
-    }
   </style>
 </head>
 <body>
@@ -162,137 +150,44 @@
 
   <!-- Adicionando Particles.js via CDN -->
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.js"></script> <!-- Biblioteca para hash -->
   <script>
     // Configurações do Particles.js usando o JSON fornecido
     particlesJS('particles-js', {
       "particles": {
-        "number": {
-          "value": 160,
-          "density": {
-            "enable": true,
-            "value_area": 800
-          }
-        },
-        "color": {
-          "value": "#ffffff"
-        },
-        "shape": {
-          "type": "circle",
-          "stroke": {
-            "width": 0,
-            "color": "#000000"
-          },
-          "polygon": {
-            "nb_sides": 5
-          },
-          "image": {
-            "src": "img/github.svg",
-            "width": 100,
-            "height": 100
-          }
-        },
-        "opacity": {
-          "value": 1,
-          "random": true,
-          "anim": {
-            "enable": true,
-            "speed": 1,
-            "opacity_min": 0,
-            "sync": false
-          }
-        },
-        "size": {
-          "value": 3,
-          "random": true,
-          "anim": {
-            "enable": false,
-            "speed": 4,
-            "size_min": 0.3,
-            "sync": false
-          }
-        },
-        "line_linked": {
-          "enable": false,
-          "distance": 150,
-          "color": "#ffffff",
-          "opacity": 0.4,
-          "width": 1
-        },
-        "move": {
-          "enable": true,
-          "speed": 1,
-          "direction": "none",
-          "random": true,
-          "straight": false,
-          "out_mode": "out",
-          "bounce": false,
-          "attract": {
-            "enable": false,
-            "rotateX": 600,
-            "rotateY": 600
-          }
-        }
+        "number": { "value": 160, "density": { "enable": true, "value_area": 800 } },
+        "color": { "value": "#ffffff" },
+        "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } },
+        "opacity": { "value": 1, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0, "sync": false } },
+        "size": { "value": 3, "random": true },
+        "line_linked": { "enable": false },
+        "move": { "enable": true, "speed": 1, "direction": "none", "random": true, "out_mode": "out" }
       },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": {
-            "enable": true,
-            "mode": "bubble"
-          },
-          "onclick": {
-            "enable": true,
-            "mode": "repulse"
-          },
-          "resize": true
-        },
-        "modes": {
-          "grab": {
-            "distance": 400,
-            "line_linked": {
-              "opacity": 1
-            }
-          },
-          "bubble": {
-            "distance": 250,
-            "size": 0,
-            "duration": 2,
-            "opacity": 0,
-            "speed": 3
-          },
-          "repulse": {
-            "distance": 400,
-            "duration": 0.4
-          },
-          "push": {
-            "particles_nb": 4
-          },
-          "remove": {
-            "particles_nb": 2
-          }
-        }
-      },
+      "interactivity": { "events": { "onhover": { "enable": true, "mode": "bubble" }, "onclick": { "enable": true, "mode": "repulse" } } },
       "retina_detect": true
     });
 
-    // Função para validar a senha
+    // Hash armazenado (senha = "9221")
+    const senhaHashCorreta = 'ec432f66f19440b9d3a00b8487c88a2c4c6a3f31374a5c518e56c32232292fcc';
+
     document.getElementById('passwordForm').addEventListener('submit', function (e) {
       e.preventDefault();
 
-      const senhaInput =
+      // Combinar os valores digitados
+      const senhaDigitada =
         document.getElementById('input1').value +
         document.getElementById('input2').value +
         document.getElementById('input3').value +
         document.getElementById('input4').value;
-      const senhaCorreta = '9221'; // Nova senha definida
-      const erroMensagem = document.getElementById('errorMessage');
 
-      if (senhaInput === senhaCorreta) {
-        // Redirecionar para o relatório real
-        window.location.href =
-          'https://lookerstudio.google.com/reporting/8bc477e4-2e80-4aec-af8c-ee9f981a7109'; // Link correto do relatório
+      // Gerar o hash da senha digitada
+      const senhaHashDigitada = CryptoJS.SHA256(senhaDigitada).toString();
+
+      // Verificar se o hash gerado é igual ao hash armazenado
+      if (senhaHashDigitada === senhaHashCorreta) {
+        window.location.href = 'https://lookerstudio.google.com/reporting/8bc477e4-2e80-4aec-af8c-ee9f981a7109';
       } else {
-        erroMensagem.style.display = 'block';
+        document.getElementById('errorMessage').style.display = 'block';
       }
     });
 
@@ -301,10 +196,10 @@
     inputs.forEach((input, index) => {
       input.addEventListener('input', function () {
         if (input.value.length === 1 && index < inputs.length - 1) {
-          inputs[index + 1].focus(); // Foca no próximo campo quando o usuário digita algo
+          inputs[index + 1].focus();
         } else if (input.value === '') {
           if (index > 0) {
-            inputs[index - 1].focus(); // Volta para o campo anterior se o valor for apagado
+            inputs[index - 1].focus();
           }
         }
       });
