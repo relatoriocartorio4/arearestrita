@@ -32,11 +32,11 @@
       z-index: 0;
     }
 
-    /* Container principal */
+    /* Container principal com efeito Glassmorphism */
     .container {
       text-align: center;
-      background: rgba(255, 255, 255, 0.1); /* Efeito de vidro com opacidade */
-      backdrop-filter: blur(10px); /* Efeito de desfocagem */
+      background: rgba(255, 255, 255, 0.2); /* Aumentando a opacidade do fundo para deixar mais claro */
+      backdrop-filter: blur(6px); /* Desfoque leve */
       border-radius: 15px;
       box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
       padding: 40px;
@@ -117,12 +117,22 @@
       margin-top: 10px;
       font-size: 1rem;
     }
+
+    /* Animação do fundo (gradiente dinâmico) */
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
   </style>
 </head>
 <body>
-  <!-- Particles.js Background -->
-  <div id="particles-js"></div>
-
   <div class="container">
     <!-- Logo -->
     <img src="https://github.com/relatoriocartorio4/arearestrita/raw/main/relatorio1/logo_6oficio%20(1).png" alt="Logo" class="logo">
@@ -290,5 +300,6 @@
       });
     });
   </script>
+
 </body>
 </html>
