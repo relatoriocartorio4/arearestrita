@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Área Restrita</title>
   <style>
-    /* Reset do estilo */
     * {
       margin: 0;
       padding: 0;
@@ -21,10 +20,9 @@
       margin: 0;
       position: relative;
       overflow: hidden;
-      background-color: #043049; /* Cor de fundo da página */
+      background-color: #043049;
     }
 
-    /* Particles.js */
     #particles-js {
       position: absolute;
       width: 100%;
@@ -32,45 +30,39 @@
       z-index: 0;
     }
 
-    /* Container principal */
     .container {
       text-align: center;
-      background: rgba(255, 255, 255, 0.1); /* Efeito de vidro com opacidade */
-      backdrop-filter: blur(10px); /* Efeito de desfocagem */
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
       border-radius: 15px;
       box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
       padding: 40px;
       width: 90%;
       max-width: 500px;
-      z-index: 1; /* Garante que o conteúdo fique acima do fundo */
-      border: 1px solid #ffffff; /* Borda fina ao redor do container */
+      z-index: 1;
+      border: 1px solid #ffffff;
     }
 
-    /* Logo */
     .logo {
       width: 150px;
       margin-bottom: 20px;
-      opacity: 1; /* Redução de brilho */
-      filter: brightness(0.8); /* Diminui o brilho da logo em 20% */
+      opacity: 1;
+      filter: brightness(0.8);
     }
 
-    /* Título principal */
     h1 {
-      color: #ffffff; /* Cor das letras */
+      color: #ffffff;
       font-size: 3rem;
       font-weight: 700;
       margin-bottom: 20px;
-      font-family: 'Montserrat', sans-serif;
     }
 
-    /* Subtítulo */
     p {
-      color: #ffffff; /* Cor das letras */
+      color: #ffffff;
       font-size: 1.2rem;
       margin-bottom: 30px;
     }
 
-    /* Caixa de senha */
     .password-container {
       display: flex;
       justify-content: center;
@@ -83,59 +75,52 @@
       width: 50px;
       height: 50px;
       border-radius: 8px;
-      background: #0b4261; /* Cor de fundo do campo de senha */
-      color: #fff; /* Cor da letra */
+      background: #0b4261;
+      color: #fff;
       font-size: 1.5rem;
       text-align: center;
-      border: 2px solid #ffffff; /* Borda branca constante */
-      transition: background 0.3s, border-color 0.3s;
+      border: 2px solid #ffffff;
     }
 
     .password-input:focus {
-      background: rgba(255, 255, 255, 0.3); /* Efeito de fundo claro ao focar */
+      background: rgba(255, 255, 255, 0.3);
       outline: none;
-      border-color: #2874A6; /* Borda azul ao focar */
+      border-color: #2874A6;
     }
 
-    /* Botão de envio */
     button {
       margin-top: 20px;
       padding: 12px 30px;
-      background-color: #016db5; /* Cor do botão */
+      background-color: #016db5;
       color: #fff;
       font-size: 1.2rem;
       border: none;
       border-radius: 30px;
       cursor: pointer;
-      transition: background 0.3s, transform 0.3s;
     }
 
     button:hover {
       background-color: #2874A6;
-      transform: translateY(-5px); /* Efeito go up (subir um pouco) */
+      transform: translateY(-5px);
     }
 
-    /* Mensagem de erro */
     .error {
       color: red;
       margin-top: 10px;
       font-size: 1rem;
-      font-weight: bold; /* Texto em negrito */
+      font-weight: bold;
+      display: none;
     }
   </style>
 </head>
 <body>
-  <div id="particles-js"></div> <!-- Particles.js Background -->
+  <div id="particles-js"></div>
 
   <div class="container">
-    <!-- Logo -->
     <img src="https://github.com/relatoriocartorio4/arearestrita/raw/main/relatorio1/logo_6oficio%20(1).png" alt="Logo" class="logo">
-    
-    <!-- Título da página -->
     <h1>ÁREA RESTRITA</h1>
     <p>Para acessar, coloque a senha de acesso</p>
 
-    <!-- Formulário de senha -->
     <form id="passwordForm">
       <div class="password-container">
         <input type="password" class="password-input" id="input1" maxlength="1" autocomplete="off" autofocus>
@@ -144,13 +129,12 @@
         <input type="password" class="password-input" id="input4" maxlength="1" autocomplete="off">
       </div>
       <button type="submit">Acessar Relatório</button>
-      <p class="error" id="errorMessage" style="display: none;">Senha incorreta. Tente novamente.</p>
+      <p class="error" id="errorMessage">Senha incorreta. Tente novamente.</p>
     </form>
   </div>
 
-  <!-- Adicionando Particles.js via CDN -->
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.js"></script> <!-- Biblioteca para hash -->
+  <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.js"></script>
   <script>
     // Configuração do Particles.js
     particlesJS('particles-js', {
@@ -200,11 +184,11 @@
       "interactivity": {
         "events": {
           "onhover": {
-            "enable": false // Desabilitado o efeito de bubble
+            "enable": false
           },
           "onclick": {
             "enable": true,
-            "mode": "repulse" // Efeito de repulsão ao clicar
+            "mode": "repulse"
           }
         }
       },
@@ -224,7 +208,7 @@
         document.getElementById('input3').value +
         document.getElementById('input4').value;
 
-      // Verifica se todos os campos têm valores preenchidos
+      // Verificando se a senha foi preenchida corretamente
       if (senhaDigitada.length !== 4) {
         document.getElementById('errorMessage').innerText = 'Por favor, insira uma senha de 4 dígitos.';
         document.getElementById('errorMessage').style.display = 'block';
@@ -234,9 +218,9 @@
       // Gerando o hash da senha digitada
       const senhaHashDigitada = CryptoJS.SHA256(senhaDigitada).toString();
 
-      console.log('Senha Digitada Hash: ', senhaHashDigitada);  // Para debugar o hash gerado
+      console.log('Hash da Senha Digitada:', senhaHashDigitada); // Para depuração
 
-      // Verificar se o hash gerado é igual ao hash armazenado
+      // Verificar se o hash gerado é igual ao hash correto
       if (senhaHashDigitada === senhaHashCorreta) {
         window.location.href = 'https://lookerstudio.google.com/reporting/8bc477e4-2e80-4aec-af8c-ee9f981a7109';
       } else {
@@ -244,7 +228,7 @@
       }
     });
 
-    // Automatizar o foco do próximo campo de senha
+    // Automatizando o foco para o próximo campo de senha
     const inputs = document.querySelectorAll('.password-input');
     inputs.forEach((input, index) => {
       input.addEventListener('input', function () {
